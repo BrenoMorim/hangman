@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { TemaContext } from "../../contexts/TemaContext";
 import { EstadosJogo } from "../../types/EstadosJogo";
 
-export default function TelaFinal({resultadoJogo, resetarJogo}) {
+export default function TelaFinal({palavraSecreta, resultadoJogo, resetarJogo}) {
     if (resultadoJogo == EstadosJogo.emAndamento) return <></>;
 
     const navegacao = useNavigation();
@@ -16,7 +16,8 @@ export default function TelaFinal({resultadoJogo, resetarJogo}) {
     return (
         <View style={estilos.telaFinal}>
             <Text style={estilos.titulo}>{resultadoJogo == EstadosJogo.ganhou ? "Parabéns! Você ganhou =)" : "Que pena! Você perdeu =("}</Text>
-            <TouchableOpacity style={estilos.botao} onPress={resetarJogo}>
+            {resultadoJogo == EstadosJogo.perdeu && <Text style={estilos.subtitulo}>A palavra secreta era {palavraSecreta}</Text>}
+            <TouchableOpacity style={estilos.botao} onPress={async () => await resetarJogo()}>
                 <Text style={estilos.botaoTexto}>Jogar Novamente</Text>
                 </TouchableOpacity>
             <TouchableOpacity style={estilos.botao} onPress={() => {navegacao.navigate("PaginaInicial")}}>
@@ -46,6 +47,13 @@ const getEstilo = (tema) => StyleSheet.create({
         fontWeight: "bold",
         textAlign: "center",
         marginVertical: 16
+    },
+    subtitulo: {
+        color: tema.laranja,
+        fontSize: 28,
+        fontWeight: "500",
+        textAlign: "center",
+        marginVertical: 12
     },
     botao: {
         backgroundColor: tema.corFundo,

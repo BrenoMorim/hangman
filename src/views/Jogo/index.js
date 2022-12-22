@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { useContext, useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -6,26 +7,26 @@ import Teclado from "../../components/Teclado";
 import TelaFinal from "../../components/TelaFinal";
 import { LetraEscolhidaContext } from "../../contexts/LetraEscolhidaContext";
 import { TemaContext } from "../../contexts/TemaContext";
+import { escolherPalavraSecreta } from "../../service/escolherPalavraSecreta";
 import { EstadosJogo } from "../../types/EstadosJogo";
 import { getEstilo } from "./estilos";
 
-export default function Jogo() {
+export default function Jogo({route}) {
 
-  const {
-    temas,
-  } = useContext(TemaContext);  
+  const [palavraSecreta, setPalavraSecreta] = useState(route.params?.palavraSecreta);
+  const { temas } = useContext(TemaContext);  
   const estilos = getEstilo(temas);
   const [letraEscolhida, setLetraEscolhida] = useState("");
   const [letrasUsadas, setLetrasUsadas] = useState([]);
   const [erros, setErros] = useState(0);
   const errosMaximo = 5;
   const [resultadoJogo, setResultadoJogo] = useState(EstadosJogo.emAndamento)
-  const palavraSecreta = "MORANGO".split("");
+
   const progressoAtual = palavraSecreta.map(letra => {
     if (letrasUsadas.includes(letra)) return letra;
     return "_";
   });
-  
+
   useEffect(() => {
     if (erros >= errosMaximo)
       setResultadoJogo(EstadosJogo.perdeu);
@@ -44,7 +45,9 @@ export default function Jogo() {
     }
   }
 
-  function resetarJogo() {
+  async function resetarJogo() {
+    const novaPalavraSecreta = await escolherPalavraSecreta();
+    setPalavraSecreta(novaPalavraSecreta);
     setErros(0);
     setLetraEscolhida("");
     setLetrasUsadas([]);
@@ -55,7 +58,7 @@ export default function Jogo() {
     <LetraEscolhidaContext.Provider value={{letraEscolhida, setLetraEscolhida}}>
     <SafeAreaView style={estilos.container}>
 
-      <TelaFinal resultadoJogo={resultadoJogo} resetarJogo={resetarJogo}/>
+      <TelaFinal palavraSecreta={palavraSecreta} resultadoJogo={resultadoJogo} resetarJogo={resetarJogo}/>
 
       <Logo/>
 
