@@ -4,7 +4,7 @@ import { escuro, claro } from "../estilosGlobais";
 export const TemaContext = createContext({});
 
 export function TemaProvider({ children }) {
-    const [tema, setTemaAtual] = useState("escuro");
+    const [temaAtual, setTemaAtual] = useState("escuro");
 
     const temas = {
         'escuro': escuro,
@@ -14,8 +14,8 @@ export function TemaProvider({ children }) {
     return (
         <TemaContext.Provider
             value={{
-                tema,
-                temas: temas[tema],
+                temaAtual,
+                temas: temas[temaAtual],
                 setTemaAtual,
             }}
         >

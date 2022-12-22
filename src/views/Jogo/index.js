@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Logo from "../../components/Logo";
 import Teclado from "../../components/Teclado";
 import TelaFinal from "../../components/TelaFinal";
 import { LetraEscolhidaContext } from "../../contexts/LetraEscolhidaContext";
@@ -42,15 +44,20 @@ export default function Jogo() {
     }
   }
 
+  function resetarJogo() {
+    setErros(0);
+    setLetraEscolhida("");
+    setLetrasUsadas([]);
+    setResultadoJogo(EstadosJogo.emAndamento);
+  }
+
   return (
     <LetraEscolhidaContext.Provider value={{letraEscolhida, setLetraEscolhida}}>
     <SafeAreaView style={estilos.container}>
 
-      <TelaFinal resultadoJogo={resultadoJogo}/>
+      <TelaFinal resultadoJogo={resultadoJogo} resetarJogo={resetarJogo}/>
 
-      <View style={estilos.titulosContainer}>
-        <Text style={estilos.tituloBold}>Hang</Text><Text style={estilos.titulo}>Man</Text>
-      </View>
+      <Logo/>
 
       <Text style={estilos.subtitulo}>
         {progressoAtual.join(" ")}

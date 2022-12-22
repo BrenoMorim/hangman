@@ -11,21 +11,6 @@ export const getEstilo = (tema) => {
         flex: 1,
         zIndex: 0
       },
-      titulosContainer: {
-        display: "flex",
-        flexDirection: "row",
-        marginVertical: 24
-      },
-      titulo: {
-        color: tema.corTextos,
-        fontSize: 56,
-        fontWeight: "bold"
-      },
-      tituloBold: {
-        color: tema.laranja,
-        fontWeight: "bold",
-        fontSize: 56
-      },
       subtitulo: {
         color: tema.corTextos,
         marginVertical: 10,
