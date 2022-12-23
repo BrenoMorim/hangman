@@ -36,6 +36,18 @@ export const getEstilo = (tema) => {
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "baseline"
+      },
+      progresso: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "flex-end",
+        justifyContent: "space-between"
+      },
+      progressoAtual: {
+        color: tema.laranja,
+        marginLeft: 16,
+        fontSize: 22,
+        fontWeight: "600"
       }
     })
   }

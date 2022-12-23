@@ -2,9 +2,11 @@ import { useNavigation } from "@react-navigation/native";
 import { useContext, useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import ImagemForca from "../../components/ImagemForca";
 import Logo from "../../components/Logo";
 import Teclado from "../../components/Teclado";
 import TelaFinal from "../../components/TelaFinal";
+import { DificuldadeContext } from "../../contexts/DificuldadeContext";
 import { LetraEscolhidaContext } from "../../contexts/LetraEscolhidaContext";
 import { TemaContext } from "../../contexts/TemaContext";
 import { escolherPalavraSecreta } from "../../service/escolherPalavraSecreta";
@@ -19,7 +21,7 @@ export default function Jogo({route}) {
   const [letraEscolhida, setLetraEscolhida] = useState("");
   const [letrasUsadas, setLetrasUsadas] = useState([]);
   const [erros, setErros] = useState(0);
-  const errosMaximo = 5;
+  const { chances } = useContext(DificuldadeContext);
   const [resultadoJogo, setResultadoJogo] = useState(EstadosJogo.emAndamento)
 
   const progressoAtual = palavraSecreta.map(letra => {
@@ -28,7 +30,7 @@ export default function Jogo({route}) {
   });
 
   useEffect(() => {
-    if (erros >= errosMaximo)
+    if (erros >= chances)
       setResultadoJogo(EstadosJogo.perdeu);
     if (!progressoAtual.includes("_"))
       setResultadoJogo(EstadosJogo.ganhou);
@@ -62,12 +64,16 @@ export default function Jogo({route}) {
 
       <Logo/>
 
-      <Text style={estilos.subtitulo}>
-        {progressoAtual.join(" ")}
-      </Text>
+      <View style={estilos.progresso}>
+        <ImagemForca style={estilos.ImagemForca} numeroErros={erros} width={120} height={200}/>
+        <Text style={estilos.progressoAtual}>
+          {progressoAtual.join(" ")}
+        </Text>
+      </View>
+
 
       <View>
-        <Text style={estilos.subtitulo}>Chances restantes: {errosMaximo - erros}</Text>
+        <Text style={estilos.subtitulo}>Chances restantes: {chances - erros}</Text>
         <Text style={estilos.subtitulo}>Letras já escolhidas:</Text>
         <Text style={estilos.subtitulo}>{letrasUsadas.join(" ")}</Text>
       </View>

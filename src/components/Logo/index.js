@@ -21,6 +21,8 @@ const getEstilo = (tema) => {
       titulosContainer: {
         display: "flex",
         flexDirection: "row",
+        borderBottomWidth: 5,
+        borderColor: tema.preto,
         marginVertical: 24
       },
       titulo: {
