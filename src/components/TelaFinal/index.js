@@ -2,26 +2,29 @@ import { useNavigation } from "@react-navigation/native";
 import { useContext } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { TemaContext } from "../../contexts/TemaContext";
+import { IdiomaContext } from "../../contexts/IdiomaContext";
 import { EstadosJogo } from "../../types/EstadosJogo";
+import getTextos from "../../service/getTextos";
 
 export default function TelaFinal({palavraSecreta, resultadoJogo, resetarJogo}) {
     if (resultadoJogo == EstadosJogo.emAndamento) return <></>;
 
     const navegacao = useNavigation();
-    const {
-        temas,
-      } = useContext(TemaContext);  
-      const estilos = getEstilo(temas);
+    const { temas } = useContext(TemaContext);  
+    const estilos = getEstilo(temas);
+
+    const { idioma } = useContext(IdiomaContext);
+    const textos = getTextos(idioma);
 
     return (
         <View style={estilos.telaFinal}>
-            <Text style={estilos.titulo}>{resultadoJogo == EstadosJogo.ganhou ? "Parabéns! Você ganhou =)" : "Que pena! Você perdeu =("}</Text>
-            {resultadoJogo == EstadosJogo.perdeu && <Text style={estilos.subtitulo}>A palavra secreta era {palavraSecreta}</Text>}
+            <Text style={estilos.titulo}>{resultadoJogo == EstadosJogo.ganhou ? textos.mensagemGanhou : textos.mensagemPerdeu}</Text>
+            {resultadoJogo == EstadosJogo.perdeu && <Text style={estilos.subtitulo}>{`${textos.revelarPalavraSecreta} ${palavraSecreta.join('')}`}</Text>}
             <TouchableOpacity style={estilos.botao} onPress={async () => await resetarJogo()}>
-                <Text style={estilos.botaoTexto}>Jogar Novamente</Text>
+                <Text style={estilos.botaoTexto}>{textos.botaoJogarNovamente}</Text>
                 </TouchableOpacity>
             <TouchableOpacity style={estilos.botao} onPress={() => {navegacao.navigate("PaginaInicial")}}>
-                <Text style={estilos.botaoTexto}>Página Inicial</Text>
+                <Text style={estilos.botaoTexto}>{textos.botaoPaginaInicial}</Text>
             </TouchableOpacity>
         </View>
     );
