@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ImagemForca from "../../components/ImagemForca";
 import Logo from "../../components/Logo";
@@ -14,6 +13,8 @@ import { EstadosJogo } from "../../types/EstadosJogo";
 import Botao from '../../components/Botao';
 import { getEstilo } from "./estilos";
 import getTextos from "../../service/getTextos";
+import * as Animatable from 'react-native-animatable';
+import Texto from "../../components/Texto";
 
 export default function Jogo({route}) {
 
@@ -38,7 +39,7 @@ export default function Jogo({route}) {
       setResultadoJogo(EstadosJogo.perdeu);
     if (!progressoAtual.includes("_"))
       setResultadoJogo(EstadosJogo.ganhou);
-    }, [letrasUsadas])
+    }, [letrasUsadas]);
     
   function chutar() {
     if (resultadoJogo != EstadosJogo.emAndamento || letraEscolhida == "") return;
@@ -68,25 +69,27 @@ export default function Jogo({route}) {
 
       <Logo/>
 
-      <View style={estilos.progresso}>
+      <Animatable.View animation={"bounceIn"} duration={2000} style={estilos.progresso}>
         <ImagemForca style={estilos.ImagemForca} numeroErros={erros} width={120} height={200}/>
-        <Text style={estilos.progressoAtual}>
+        <Texto cor={temas.laranja} tamanho={22} peso={"600"} margemHorizontal={16} style={estilos.progressoAtual}>
           {progressoAtual.join(" ")}
-        </Text>
-      </View>
+        </Texto>
+      </Animatable.View>
 
-
-      <View>
-        <Text style={estilos.subtitulo}>{`${textos.chancesRestantes} ${chances - erros}`}</Text>
-        <Text style={estilos.subtitulo}>{letrasUsadas.length > 0 && textos.letrasJaEscolhidas}</Text>
-        <Text style={estilos.subtitulo}>{letrasUsadas.join(" ")}</Text>
-      </View>
+      <Animatable.View animation={"bounceInLeft"} duration={2000}>
+        <Texto cor={temas.corTextos}>{`${textos.chancesRestantes} ${chances - erros}`}</Texto>
+        <Texto cor={temas.corTextos}>{letrasUsadas.length > 0 && textos.letrasJaEscolhidas}</Texto>
+        <Texto cor={temas.corTextos}>{letrasUsadas.join(" ")}</Texto>
+      </Animatable.View>
       
-      <View style={estilos.chuteContainer}>
+      <Animatable.View animation={"bounceInRight"} duration={2000} style={estilos.chuteContainer}>
         <Botao callback={chutar} texto={textos.botaoChutar} corFundo={temas.laranja} corTextos={temas.corTextos}/>
-        <Text style={estilos.subtitulo}>{letraEscolhida == "" ? "_" : letraEscolhida}</Text>
-      </View>
-      <Teclado letrasUsadas={letrasUsadas}/>
+        <Texto cor={temas.corTextos}>{letraEscolhida == "" ? "_" : letraEscolhida}</Texto>
+      </Animatable.View>
+
+      <Animatable.View animation={"bounceInUp"} duration={2000}>
+        <Teclado letrasUsadas={letrasUsadas}/>
+      </Animatable.View>
     </SafeAreaView>
     </LetraEscolhidaContext.Provider>
   );

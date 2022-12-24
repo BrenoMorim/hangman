@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { StyleSheet, Text, View } from "react-native"
 import { TemaContext } from "../../contexts/TemaContext";
+import * as Animatable from 'react-native-animatable';
 
 export default function Logo() {
 
@@ -10,9 +11,9 @@ export default function Logo() {
       const estilos = getEstilo(temas);
 
     return (
-        <View style={estilos.titulosContainer}>
+        <Animatable.View animation={"bounceInDown"} duration={1500} style={estilos.titulosContainer}>
             <Text style={estilos.tituloBold}>Hang</Text><Text style={estilos.titulo}>Man</Text>
-        </View>
+        </Animatable.View>
     );
 }
 

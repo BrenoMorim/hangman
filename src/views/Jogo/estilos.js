@@ -11,12 +11,6 @@ export const getEstilo = (tema) => {
         flex: 1,
         zIndex: 0
       },
-      subtitulo: {
-        color: tema.corTextos,
-        marginVertical: 10,
-        marginHorizontal: 8,
-        fontSize: 24
-      },
       chuteContainer: {
         display: "flex",
         flexDirection: "row",
@@ -28,12 +22,6 @@ export const getEstilo = (tema) => {
         flexDirection: "row",
         alignItems: "flex-end",
         justifyContent: "space-between"
-      },
-      progressoAtual: {
-        color: tema.laranja,
-        marginLeft: 16,
-        fontSize: 22,
-        fontWeight: "600"
       }
     })
   }

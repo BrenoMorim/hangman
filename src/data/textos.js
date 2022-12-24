@@ -2,7 +2,7 @@ const textos = {
     "português": {
         botaoChutar: "Chutar",
         chancesRestantes: "Chances restantes:",
-        letrasJaEscolhidas: "Letras já escolhidas",
+        letrasJaEscolhidas: "Letras já escolhidas:",
         mensagemPerdeu: "Que pena! Você perdeu =(",
         mensagemGanhou: "Parabéns! Você ganhou =)",
         revelarPalavraSecreta: "A palavra secreta era",
@@ -23,7 +23,7 @@ const textos = {
     "english": {
         botaoChutar: "Guess",
         chancesRestantes: "Remaining chances:",
-        letrasJaEscolhidas: "Already selected letters",
+        letrasJaEscolhidas: "Already selected letters:",
         mensagemPerdeu: "Game over! You lost =(",
         mensagemGanhou: "Great job! You've won =)",
         revelarPalavraSecreta: "The answer was",

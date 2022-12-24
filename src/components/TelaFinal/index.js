@@ -1,10 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import { useContext } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { TemaContext } from "../../contexts/TemaContext";
 import { IdiomaContext } from "../../contexts/IdiomaContext";
 import { EstadosJogo } from "../../types/EstadosJogo";
 import getTextos from "../../service/getTextos";
+import Botao from "../Botao";
+import * as Animatable from 'react-native-animatable';
+import Texto from "../Texto";
 
 export default function TelaFinal({palavraSecreta, resultadoJogo, resetarJogo}) {
     if (resultadoJogo == EstadosJogo.emAndamento) return <></>;
@@ -17,16 +20,27 @@ export default function TelaFinal({palavraSecreta, resultadoJogo, resetarJogo}) 
     const textos = getTextos(idioma);
 
     return (
-        <View style={estilos.telaFinal}>
-            <Text style={estilos.titulo}>{resultadoJogo == EstadosJogo.ganhou ? textos.mensagemGanhou : textos.mensagemPerdeu}</Text>
-            {resultadoJogo == EstadosJogo.perdeu && <Text style={estilos.subtitulo}>{`${textos.revelarPalavraSecreta} ${palavraSecreta.join('')}`}</Text>}
-            <TouchableOpacity style={estilos.botao} onPress={async () => await resetarJogo()}>
-                <Text style={estilos.botaoTexto}>{textos.botaoJogarNovamente}</Text>
-                </TouchableOpacity>
-            <TouchableOpacity style={estilos.botao} onPress={() => {navegacao.navigate("PaginaInicial")}}>
-                <Text style={estilos.botaoTexto}>{textos.botaoPaginaInicial}</Text>
-            </TouchableOpacity>
-        </View>
+        <Animatable.View animation={"bounceIn"} duration={1200} style={estilos.telaFinal}>
+            <Texto cor={temas.corFundo} tamanho={48} margemHorizontal={0} margemVertical={16} peso={"bold"}>
+                {resultadoJogo == EstadosJogo.ganhou ? textos.mensagemGanhou : textos.mensagemPerdeu}
+            </Texto>
+            {resultadoJogo == EstadosJogo.perdeu && 
+                <Texto cor={temas.laranja} tamanho={28} margemVertical={12} margemHorizontal={0}>
+                    {`${textos.revelarPalavraSecreta} ${palavraSecreta.join('')}`}
+                </Texto>
+            }
+            <Animatable.View animation={"pulse"} duration={500} iterationCount={"infinite"}>
+                <Botao
+                    animation
+                    texto={textos.botaoJogarNovamente} callback={async () => await resetarJogo()}
+                    corFundo={temas.corFundo} corTextos={temas.corTextos}
+                />
+            </Animatable.View>
+            <Botao 
+                texto={textos.botaoPaginaInicial} callback={() => {navegacao.navigate("PaginaInicial")}}
+                corFundo={temas.corFundo} corTextos={temas.corTextos}
+            />
+        </Animatable.View>
     );
 }
 
@@ -43,30 +57,5 @@ const getEstilo = (tema) => StyleSheet.create({
         top: "25%",
         borderRadius: 24,
         opacity: 0.9
-    },
-    titulo: {
-        color: tema.corFundo,
-        fontSize: 48,
-        fontWeight: "bold",
-        textAlign: "center",
-        marginVertical: 16
-    },
-    subtitulo: {
-        color: tema.laranja,
-        fontSize: 28,
-        fontWeight: "500",
-        textAlign: "center",
-        marginVertical: 12
-    },
-    botao: {
-        backgroundColor: tema.corFundo,
-        borderRadius: 10,
-        padding: 16,
-        marginVertical: 16
-    },
-    botaoTexto: {
-        color: tema.corTextos,
-        fontWeight: "500",
-        fontSize: 24
     }
 });

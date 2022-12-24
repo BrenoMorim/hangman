@@ -11,6 +11,7 @@ import { IdiomaContext } from "../../contexts/IdiomaContext";
 import { TemaContext } from "../../contexts/TemaContext";
 import { escolherPalavraSecreta } from "../../service/escolherPalavraSecreta";
 import getTextos from "../../service/getTextos";
+import * as Animatable from 'react-native-animatable';
 
 export default function PaginaInicial() {
   
@@ -28,11 +29,25 @@ export default function PaginaInicial() {
 
   return (
     <SafeAreaView style={estilos.container}>
+
       <Logo/>
-      <Botao callback={async () => {await irParaTelaJogo()}} texto={textos.botaoJogar} corFundo={temas.corTextos} corTextos={temas.laranja}/>
-      <MenuTema/>
-      <MenuIdioma />
-      <MenuDificuldade />
+
+      <Animatable.View animation={"wobble"} iterationCount={"infinite"} duration={2500}>
+        <Botao callback={async () => {await irParaTelaJogo()}} texto={textos.botaoJogar} corFundo={temas.corTextos} corTextos={temas.laranja}/>
+      </Animatable.View>
+
+      <Animatable.View animation={"bounceInRight"} duration={2500}>
+        <MenuTema/>
+      </Animatable.View>
+
+      <Animatable.View animation={"bounceInLeft"} duration={2500}>
+        <MenuIdioma />
+      </Animatable.View>
+
+      <Animatable.View animation={"bounceInRight"} duration={2500}>
+        <MenuDificuldade />
+      </Animatable.View>
+
     </SafeAreaView>
   );
 }

@@ -4,7 +4,7 @@ import Tecla from "./Tecla";
 export default function Teclado({letrasUsadas}) {
     const linhas = [
         "QWERTYUIOP".split(""),
-        "ASDFGHJKLÇ".split(""),
+        "ASDFGHJKL".split(""),
         "ZXCVBNM".split("")
     ];
     return (
@@ -12,13 +12,13 @@ export default function Teclado({letrasUsadas}) {
         <FlatList
             data={linhas}
             style={estilos.linhasContainer}
-            keyExtractor={(item) => Math.random()}
+            keyExtractor={() => Math.random()}
             renderItem={(item) => {
                 return (
                     <FlatList
                     style={estilos.linhaContainer}
                     data={item.item}
-                    keyExtractor={(item) => Math.random()}
+                    keyExtractor={() => Math.random()}
                     renderItem={(item) => <Tecla letrasUsadas={letrasUsadas} letra={item.item}/>}
                     />
                     );
