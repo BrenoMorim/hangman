@@ -22,14 +22,16 @@ export default function Tecla({letrasUsadas, letra}) {
 
 const getEstilo = (tema, jaFoi) => StyleSheet.create({
     tecla: {
-        paddingVertical: 4,
-        paddingHorizontal: 8,
+        paddingVertical: 2,
+        paddingHorizontal: 4,
         borderColor: jaFoi ? tema.cinza : tema.laranja,
         borderWidth: 1,
-        margin: 3
+        margin: 3,
+        borderRadius: 5,
     },
     teclaLetra: {
-        fontSize: 20,
+        fontSize: 25,
+        fontWeight: "bold",
         color: jaFoi ? tema.cinza : tema.laranja,
     }
 });

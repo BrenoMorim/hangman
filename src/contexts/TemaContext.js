@@ -11,16 +11,12 @@ export function TemaProvider({ children }) {
         'claro': claro
     }
 
-    function trocarTema() {
-        setTemaAtual(temaAtual == 'claro' ? 'escuro' : 'claro');
-    }
-
     return (
         <TemaContext.Provider
             value={{
                 temaAtual,
                 temas: temas[temaAtual],
-                trocarTema,
+                setTemaAtual,
             }}
         >
             {children}

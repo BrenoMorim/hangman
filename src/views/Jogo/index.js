@@ -1,6 +1,5 @@
-import { useNavigation } from "@react-navigation/native";
 import { useContext, useEffect, useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TextInputBase, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ImagemForca from "../../components/ImagemForca";
 import Logo from "../../components/Logo";
@@ -11,6 +10,7 @@ import { LetraEscolhidaContext } from "../../contexts/LetraEscolhidaContext";
 import { TemaContext } from "../../contexts/TemaContext";
 import { escolherPalavraSecreta } from "../../service/escolherPalavraSecreta";
 import { EstadosJogo } from "../../types/EstadosJogo";
+import Botao from '../../components/Botao';
 import { getEstilo } from "./estilos";
 
 export default function Jogo({route}) {
@@ -37,7 +37,7 @@ export default function Jogo({route}) {
     }, [letrasUsadas])
     
   function chutar() {
-    if (resultadoJogo != EstadosJogo.emAndamento) return;
+    if (resultadoJogo != EstadosJogo.emAndamento || letraEscolhida == "") return;
     if (!letrasUsadas.includes(letraEscolhida)) {
       setLetrasUsadas([...letrasUsadas, letraEscolhida]);
       setLetraEscolhida("");
@@ -74,14 +74,12 @@ export default function Jogo({route}) {
 
       <View>
         <Text style={estilos.subtitulo}>Chances restantes: {chances - erros}</Text>
-        <Text style={estilos.subtitulo}>Letras já escolhidas:</Text>
+        <Text style={estilos.subtitulo}>{letrasUsadas.length > 0 && "Letras já escolhidas:"}</Text>
         <Text style={estilos.subtitulo}>{letrasUsadas.join(" ")}</Text>
       </View>
       
       <View style={estilos.chuteContainer}>
-        <TouchableOpacity style={estilos.botao} onPress={chutar}>
-          <Text style={estilos.subtitulo}>Chutar</Text>
-        </TouchableOpacity>
+        <Botao callback={chutar} texto={"Chutar"} corFundo={temas.laranja} corTextos={temas.corTextos}/>
         <Text style={estilos.subtitulo}>{letraEscolhida == "" ? "_" : letraEscolhida}</Text>
       </View>
       <Teclado letrasUsadas={letrasUsadas}/>

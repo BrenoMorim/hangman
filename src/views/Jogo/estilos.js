@@ -14,22 +14,8 @@ export const getEstilo = (tema) => {
       subtitulo: {
         color: tema.corTextos,
         marginVertical: 10,
+        marginHorizontal: 8,
         fontSize: 24
-      },
-      input: {
-        borderColor: tema.corTextos,
-        borderWidth: 4,
-        padding: 10,
-        fontSize: 24,
-        textAlign: "center",
-        color: tema.corTextos
-      },
-      botao: {
-        backgroundColor: tema.laranja,
-        borderRadius: 12,
-        paddingVertical: 4,
-        paddingHorizontal: 8,
-        marginRight: 24
       },
       chuteContainer: {
         display: "flex",

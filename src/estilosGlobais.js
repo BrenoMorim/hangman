@@ -3,7 +3,7 @@ const escuro = {
   corTextos: '#FFFFFF',
   laranja: "#FA8D09",
   cinza: "#CDCDCD",
-  preto: "#909090"
+  preto: "#EEEEEE"
 }
 
 const claro = {

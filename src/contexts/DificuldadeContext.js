@@ -8,23 +8,11 @@ export function DificuldadeProvider({ children }) {
 
     const chances = Chances[dificuldade];
 
-    function trocarDificuldade() {
-        if (dificuldade == Dificuldades.facil) {
-            setDificuldade(Dificuldades.medio);
-        }
-        else if (dificuldade == Dificuldades.medio) {
-            setDificuldade(Dificuldades.dificil);
-        }
-        else {
-            setDificuldade(Dificuldades.facil);
-        }
-    }
-
     return (
         <DificuldadeContext.Provider
             value={{
                 dificuldade,
-                trocarDificuldade,
+                setDificuldade,
                 chances,
             }}
         >
