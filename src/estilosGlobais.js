@@ -1,5 +1,5 @@
 const escuro = {
-  corFundo: '#051933',
+  corFundo: '#424242',
   corTextos: '#FFFFFF',
   laranja: "#FA8D09",
   cinza: "#CDCDCD",
@@ -8,7 +8,7 @@ const escuro = {
 
 const claro = {
   corFundo: '#FFFFFF',
-  corTextos: '#051933',
+  corTextos: '#424242',
   laranja: "#FA8D09",
   cinza: "#444444",
   preto: "#222222"
