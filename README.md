@@ -1,7 +1,30 @@
-# HangMan
+# Hang Man
+
+> Status do Projeto: Concluído
 
 Um simples jogo da forca para praticar desenvolvimento mobile com React Native.
 
-> Status do Projeto: Em desenvolvimento
+| :placard: Vitrine.Dev |     |
+| -------------  | --- |
+| :sparkles: Nome        | **Hang Man**
+| :label: Tecnologias | React Native, JavaScript, Expo
 
-O app é um jogo da forca que vai permitir que o usuário jogue em duas linguagens: português ou inglês, assim como dois temas de cores: claro e escuro. A escolha das palavras será feita de forma aleatória através de APIs públicas e bancos de palavras, além de que será possível selecionar uma dificuldade para se jogar. O projeto está sendo desenvolvido em React Native, com auxílio da Context API, React Navigation e Expo. Além de animações que ainda serão adicionadas.
+![](https://github.com/BrenoMorim/hangman/blob/main/imagem-projeto.png?raw=true#vitrinedev)
+
+## Detalhes do projeto
+
+O app é um jogo da forca que permite que o usuário jogue em duas linguagens: português ou inglês, assim como dois temas de cores: claro e escuro. É possível também selecionar uma dificuldade para se jogar, o que vai determinar quantas chances o jogador tem. O projeto foi desenvolvido em React Native, com auxílio da Context API para gerenciar os estados, React Navigation, Expo e a biblioteca Animatable para animações.
+
+A escolha de palavras é feita utilizando web scraping no site https://www.palabrasaleatorias.com, que consegue gerar palavras aleatórias em várias línguas. Essa palavra então é normalizada para retirar acentos e cedilhas. Há também uma lista de palavras em português e outra em inglês localmente no aplicativo que são usadas caso o usuário esteja offline ou o site esteja fora do ar.
+
+## Rodando a aplicação:
+
+Estando com um emulador ou celular aberto, basta executar os comandos abaixo e em seguida escolher a plataforma pela cli do expo (android, web ou ios).
+
+```sh
+git clone https://github.com/BrenoMorim/hangman.git hangman
+cd hangman
+npm install
+npm install -g expo
+npm start
+```
