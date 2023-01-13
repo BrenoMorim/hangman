@@ -19,6 +19,7 @@ const textos = {
         dificil: "Difícil",
         portugues: "Português",
         ingles: "Inglês",
+        espanhol: "Espanhol",
         carregando: "Carregando..."
     },
     "english": {
@@ -31,7 +32,7 @@ const textos = {
         botaoJogarNovamente: "Play again",
         botaoPaginaInicial: "Home Page",
         botaoJogar: "Play",
-        tema: "Mode:",
+        tema: "Theme:",
         idioma: "Language:",
         dificuldade: "Difficulty:",
         claro: "Light",
@@ -41,8 +42,32 @@ const textos = {
         dificil: "Hard",
         portugues: "Portuguese",
         ingles: "English",
+        espanhol: "Spanish",
         carregando: "Loading..."
+    },
+    "español": {
+        botaoChutar: "Adivinar",
+        chancesRestantes: "Jugadas restantes:",
+        letrasJaEscolhidas: "Letras ya elegidas:",
+        mensagemPerdeu: "¡Que pena! Tú perdiste =(",
+        mensagemGanhou: "¡Muy bien! Tú ganaste =)",
+        revelarPalavraSecreta: "La palabra era",
+        botaoJogarNovamente: "Jugar de Nuevo",
+        botaoPaginaInicial: "Página de Inicio",
+        botaoJogar: "Jugar",
+        tema: "Tema:",
+        idioma: "Idioma:",
+        dificuldade: "Dificultad:",
+        claro: "Claro",
+        escuro: "Oscuro",
+        facil: "Fácil",
+        medio: "Medio",
+        dificil: "Difícil",
+        portugues: "Portugués",
+        ingles: "Inglés",
+        espanhol: "Español",
+        carregando: "Cargando..."
     }
-}
+};
 
 export default textos;

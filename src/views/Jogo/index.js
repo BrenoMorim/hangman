@@ -85,7 +85,7 @@ export default function Jogo({route}) {
       </Animatable.View>
       
       <Animatable.View animation={"bounceInRight"} duration={2000} style={estilos.chuteContainer}>
-        <Botao callback={chutar} texto={textos.botaoChutar} corFundo={temas.laranja} corTextos={temas.corTextos}/>
+        <Botao tamanhoFonte={24} callback={chutar} texto={textos.botaoChutar} corFundo={temas.laranja} corTextos={temas.corTextos}/>
         <Texto cor={temas.corTextos}>{letraEscolhida == "" ? "_" : letraEscolhida}</Texto>
       </Animatable.View>
 

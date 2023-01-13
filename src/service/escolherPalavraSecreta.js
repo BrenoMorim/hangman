@@ -1,14 +1,17 @@
 import axios from "axios";
 import { palavras } from "../data/palavrasPadroes";
+import { Idiomas } from "../types/Idiomas";
 
 export async function escolherPalavraSecreta(idioma) {
     try {
         // Realizando Web Scraping
         let url;
-        if (idioma == 'english') {
+        if (idioma == Idiomas.ingles) {
             url = "https://www.palabrasaleatorias.com/random-words.php?fs=1";
-        } else {
+        } else if (idioma == Idiomas.portugues) {
             url = "http://www.palabrasaleatorias.com/palavras-aleatorias.php?fs=1";
+        } else {
+            url = "http://www.palabrasaleatorias.com/index.php?fs=1";
         }
         const resposta = await axios.get(url);
         const html = resposta.data;
