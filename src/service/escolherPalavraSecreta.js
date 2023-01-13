@@ -3,7 +3,6 @@ import { palavras } from "../data/palavrasPadroes";
 
 export async function escolherPalavraSecreta(idioma) {
     try {
-
         // Realizando Web Scraping
         let url;
         if (idioma == 'english') {
@@ -18,10 +17,9 @@ export async function escolherPalavraSecreta(idioma) {
         const busca = `<div style="font-size:3em; color:#6200C5;">`;
         const indice1 = html.indexOf(busca);
         const indice2 = html.indexOf('</div>', indice1);
-        let palavraSecreta = html.substring(indice1 + busca.length, indice2);
+        const palavraSecreta = html.substring(indice1 + busca.length, indice2);
 
-        // Remover acentos
-        palavraSecreta = palavraSecreta.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+        // Checando erros e formatando o output
         if (palavraSecreta.length == 0) throw new Error("Palavra não encontrada");
         return palavraSecreta.trim().toUpperCase().split("");
         
@@ -29,8 +27,7 @@ export async function escolherPalavraSecreta(idioma) {
 
         // Garente que se o site estiver fora do ar ou se o usuário estiver offline ele ainda poderá jogar
         const indiceAleatorio = Math.floor(Math.random() * palavras[idioma].length);
-        let palavraSecreta = palavras[idioma][indiceAleatorio];
-        palavraSecreta = palavraSecreta.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const palavraSecreta = palavras[idioma][indiceAleatorio];
         return palavraSecreta.split("");
     }
 }

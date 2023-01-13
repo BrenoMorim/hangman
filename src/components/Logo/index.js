@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { StyleSheet, Text, View } from "react-native"
+import { StyleSheet, Text } from "react-native"
 import { TemaContext } from "../../contexts/TemaContext";
 import * as Animatable from 'react-native-animatable';
 

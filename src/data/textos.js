@@ -18,7 +18,8 @@ const textos = {
         medio: "Médio",
         dificil: "Difícil",
         portugues: "Português",
-        ingles: "Inglês"
+        ingles: "Inglês",
+        carregando: "Carregando..."
     },
     "english": {
         botaoChutar: "Guess",
@@ -39,7 +40,8 @@ const textos = {
         medio: "Normal",
         dificil: "Hard",
         portugues: "Portuguese",
-        ingles: "English"
+        ingles: "English",
+        carregando: "Loading..."
     }
 }
 

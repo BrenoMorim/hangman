@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Botao from "../../components/Botao";
@@ -12,6 +12,7 @@ import { TemaContext } from "../../contexts/TemaContext";
 import { escolherPalavraSecreta } from "../../service/escolherPalavraSecreta";
 import getTextos from "../../service/getTextos";
 import * as Animatable from 'react-native-animatable';
+import Carregando from "../../components/Carregando";
 
 export default function PaginaInicial() {
   
@@ -23,14 +24,19 @@ export default function PaginaInicial() {
   const textos = getTextos(idioma); 
 
   async function irParaTelaJogo() {
+    setEstaCarregando(true);
     const palavraSecreta = await escolherPalavraSecreta(idioma);
+    setEstaCarregando(false);
     navegacao.navigate("Jogo", {palavraSecreta: palavraSecreta});
   }
+
+  const [estaCarregando, setEstaCarregando] = useState(false);
 
   return (
     <SafeAreaView style={estilos.container}>
 
       <Logo/>
+      <Carregando ativado={estaCarregando}/>
 
       <Animatable.View animation={"wobble"} iterationCount={"infinite"} duration={2500}>
         <Botao callback={async () => {await irParaTelaJogo()}} texto={textos.botaoJogar} corFundo={temas.corTextos} corTextos={temas.laranja}/>

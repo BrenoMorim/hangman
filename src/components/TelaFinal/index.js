@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { StyleSheet } from "react-native";
 import { TemaContext } from "../../contexts/TemaContext";
 import { IdiomaContext } from "../../contexts/IdiomaContext";
@@ -8,6 +8,7 @@ import getTextos from "../../service/getTextos";
 import Botao from "../Botao";
 import * as Animatable from 'react-native-animatable';
 import Texto from "../Texto";
+import Carregando from "../Carregando";
 
 export default function TelaFinal({palavraSecreta, resultadoJogo, resetarJogo}) {
     if (resultadoJogo == EstadosJogo.emAndamento) return <></>;
@@ -19,8 +20,13 @@ export default function TelaFinal({palavraSecreta, resultadoJogo, resetarJogo}) 
     const { idioma } = useContext(IdiomaContext);
     const textos = getTextos(idioma);
 
+    const [estaCarregando, setEstaCarregando] = useState(false);
+
     return (
         <Animatable.View animation={"bounceIn"} duration={1200} style={estilos.telaFinal}>
+
+            <Carregando ativado={estaCarregando} />
+
             <Texto cor={temas.corFundo} tamanho={48} margemHorizontal={0} margemVertical={16} peso={"bold"}>
                 {resultadoJogo == EstadosJogo.ganhou ? textos.mensagemGanhou : textos.mensagemPerdeu}
             </Texto>
@@ -32,7 +38,11 @@ export default function TelaFinal({palavraSecreta, resultadoJogo, resetarJogo}) 
             <Animatable.View animation={"pulse"} duration={500} iterationCount={"infinite"}>
                 <Botao
                     animation
-                    texto={textos.botaoJogarNovamente} callback={async () => await resetarJogo()}
+                    texto={textos.botaoJogarNovamente} callback={async () => {
+                        setEstaCarregando(true);
+                        await resetarJogo();
+                        setEstaCarregando(false);
+                    }}
                     corFundo={temas.corFundo} corTextos={temas.corTextos}
                 />
             </Animatable.View>

@@ -30,7 +30,8 @@ export default function Jogo({route}) {
   const textos = getTextos(idioma);
 
   const progressoAtual = palavraSecreta.map(letra => {
-    if (letrasUsadas.includes(letra)) return letra;
+    const letraNormalizada = letra.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    if (letrasUsadas.includes(letraNormalizada)) return letra;
     return "_";
   });
 
@@ -47,7 +48,8 @@ export default function Jogo({route}) {
       setLetrasUsadas([...letrasUsadas, letraEscolhida]);
       setLetraEscolhida("");
     }
-    if (!palavraSecreta.includes(letraEscolhida)) {
+    const palavraNormalizada = palavraSecreta.join("").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    if (!palavraNormalizada.includes(letraEscolhida)) {
       setErros(erros + 1);
     }
   }
@@ -71,7 +73,7 @@ export default function Jogo({route}) {
 
       <Animatable.View animation={"bounceIn"} duration={2000} style={estilos.progresso}>
         <ImagemForca style={estilos.ImagemForca} numeroErros={erros} width={120} height={200}/>
-        <Texto cor={temas.laranja} tamanho={22} peso={"600"} margemHorizontal={16} style={estilos.progressoAtual}>
+        <Texto cor={temas.laranja} tamanho={22} peso={"600"} margemHorizontal={16}>
           {progressoAtual.join(" ")}
         </Texto>
       </Animatable.View>
