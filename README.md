@@ -6,10 +6,10 @@ Um simples jogo da forca para praticar desenvolvimento mobile com React Native.
 
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
-| :sparkles: Nome        | **Hang Man**
+| :sparkles: Nome | **Hang Man**
 | :label: Tecnologias | React Native, JavaScript, Expo
 
-![alt="Mostrando uma partida do jogo"](https://github.com/BrenoMorim/hangman/blob/main/imagem-projeto.png?raw=true#vitrinedev)
+![](https://github.com/BrenoMorim/hangman/blob/main/imagem-projeto.png?raw=true#vitrinedev)
 
 ## Detalhes do projeto
 
