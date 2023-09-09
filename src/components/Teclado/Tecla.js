@@ -28,10 +28,15 @@ const getEstilo = (tema, jaFoi) => StyleSheet.create({
         borderWidth: 1,
         margin: 3,
         borderRadius: 5,
+        width: 30,
+        height: 40,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
     },
     teclaLetra: {
-        fontSize: 25,
-        fontWeight: "bold",
+        fontSize: 24,
+        fontWeight: "400",
         color: jaFoi ? tema.cinza : tema.laranja,
     }
 });

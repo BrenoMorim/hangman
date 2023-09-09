@@ -2,8 +2,7 @@ import { TemaContext } from "../../contexts/TemaContext";
 import { IdiomaContext } from "../../contexts/IdiomaContext";
 import getTextos from "../../service/getTextos";
 import { useContext } from "react";
-import { StyleSheet, Text } from "react-native";
-import * as Animatable from 'react-native-animatable';
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 export default function Carregando({ativado}) {
 
@@ -13,14 +12,12 @@ export default function Carregando({ativado}) {
     const textos = getTextos(idioma); 
 
     return (
-        <Animatable.View 
-            animation={"swing"} 
-            iterationCount={"infinite"} 
-            duration={500}
+        <View
             style={estilos.carregando}
         >
+            <ActivityIndicator size="large" color={textos.corTextos} aria-hidden hidesWhenStopped />
             <Text style={estilos.carregandoTexto}>{textos.carregando}</Text>
-        </Animatable.View>
+        </View>
     )
 }
 
@@ -29,7 +26,7 @@ const getEstilo = (temas, ativado) => {
     return StyleSheet.create({
         carregando: {
             display: ativado ? "flex" : "none",
-            backgroundColor: temas.laranja,
+            backgroundColor: temas.corTextos,
             padding: 16,
             borderRadius: 24,
             zIndex: 5,
@@ -38,11 +35,11 @@ const getEstilo = (temas, ativado) => {
             position: "absolute",
             alignSelf: "center",
             opacity: ativado ? 1 : 0,
-            top: "40%"
+            top: "45%"
         },
         carregandoTexto: {
-            color: temas.corTextos,
-            fontSize: 45,
+            color: temas.corFundo,
+            fontSize: 20,
             fontWeight: "700"
         }
     });

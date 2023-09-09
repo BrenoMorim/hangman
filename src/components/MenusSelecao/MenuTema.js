@@ -21,12 +21,12 @@ export default function MenuTema() {
 
             <View style={estilos.botoesContainer}>
                 <Botao 
-                    corFundo={temas.corTextos} corTextos={temas.laranja} texto={textos.claro}
-                    callback={() => setTemaAtual("claro")} selecionado={temaAtual == 'claro'}
-                />
-                <Botao 
                     corFundo={temas.corTextos} corTextos={temas.laranja} texto={textos.escuro}
                     callback={() => setTemaAtual("escuro")} selecionado={temaAtual == 'escuro'}
+                />
+                <Botao 
+                    corFundo={temas.corTextos} corTextos={temas.laranja} texto={textos.claro}
+                    callback={() => setTemaAtual("claro")} selecionado={temaAtual == 'claro'}
                 />
             </View>
 

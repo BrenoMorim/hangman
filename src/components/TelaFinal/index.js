@@ -66,6 +66,6 @@ const getEstilo = (tema) => StyleSheet.create({
         alignSelf: "center",
         top: "25%",
         borderRadius: 24,
-        opacity: 0.9
+        opacity: 0.75
     }
 });
