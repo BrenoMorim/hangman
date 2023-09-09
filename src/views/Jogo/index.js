@@ -15,8 +15,6 @@ import { getEstilo } from "./estilos";
 import getTextos from "../../service/getTextos";
 import * as Animatable from 'react-native-animatable';
 import Texto from "../../components/Texto";
-import Home from "../../assets/icons/home.svg";
-import { View } from "react-native";
 
 export default function Jogo({route}) {
 

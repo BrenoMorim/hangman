@@ -2,7 +2,9 @@ import { TemaContext } from "../../contexts/TemaContext";
 import { IdiomaContext } from "../../contexts/IdiomaContext";
 import getTextos from "../../service/getTextos";
 import { useContext } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text } from "react-native";
+import * as Animatable from 'react-native-animatable';
+
 
 export default function Carregando({ativado}) {
 
@@ -12,12 +14,14 @@ export default function Carregando({ativado}) {
     const textos = getTextos(idioma); 
 
     return (
-        <View
+        <Animatable.View
+            animation="bounceIn"
+            duration={500}
             style={estilos.carregando}
         >
-            <ActivityIndicator size="large" color={textos.corTextos} aria-hidden hidesWhenStopped />
+            <ActivityIndicator size="large" color={temas.laranja} aria-hidden hidesWhenStopped />
             <Text style={estilos.carregandoTexto}>{textos.carregando}</Text>
-        </View>
+        </Animatable.View>
     )
 }
 
@@ -35,7 +39,9 @@ const getEstilo = (temas, ativado) => {
             position: "absolute",
             alignSelf: "center",
             opacity: ativado ? 1 : 0,
-            top: "45%"
+            top: "45%",
+            borderWidth: 2,
+            borderColor: temas.laranja
         },
         carregandoTexto: {
             color: temas.corFundo,

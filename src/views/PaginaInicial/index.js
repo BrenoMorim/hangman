@@ -38,7 +38,7 @@ export default function PaginaInicial() {
       <Logo/>
       <Carregando ativado={estaCarregando}/>
 
-      <Animatable.View animation={"wobble"} iterationCount={"infinite"} duration={2500}>
+      <Animatable.View animation={"bounce"} iterationCount={"infinite"} duration={3500}>
         <Botao tamanhoFonte={28} callback={async () => {await irParaTelaJogo()}} texto={textos.botaoJogar} corFundo={temas.corTextos} corTextos={temas.laranja}/>
       </Animatable.View>
 
