@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "hangman",
-    "slug": "hangman",
+    "slug": "brenomorim-hangman",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,10 +24,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "br.com.brenomorim.hangman"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8045fd86-cdbc-46d3-a71a-f687536c8c62"
+      }
+    },
+    "owner": "brenomorim"
   }
 }
