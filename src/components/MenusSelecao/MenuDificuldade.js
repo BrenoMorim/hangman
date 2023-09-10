@@ -9,7 +9,7 @@ import Botao from "../Botao";
 import getEstilo from "./estilos";
 
 export default function MenuDificuldade() {
-    const { dificuldade, setDificuldade } = useContext(DificuldadeContext);
+    const { dificuldade, atualizaDificuldade } = useContext(DificuldadeContext);
     const { temas } = useContext(TemaContext);
     const estilos = getEstilo(temas);
     const { idioma } = useContext(IdiomaContext);
@@ -22,15 +22,15 @@ export default function MenuDificuldade() {
             <View style={estilos.botoesContainer}>
                 <Botao 
                     corFundo={temas.corTextos} corTextos={temas.laranja} texto={textos.facil}
-                    callback={() => setDificuldade(Dificuldades.facil)} selecionado={dificuldade == Dificuldades.facil}
+                    callback={() => atualizaDificuldade(Dificuldades.facil)} selecionado={dificuldade == Dificuldades.facil}
                 />
                 <Botao 
                     corFundo={temas.corTextos} corTextos={temas.laranja} texto={textos.medio}
-                    callback={() => setDificuldade(Dificuldades.medio)} selecionado={dificuldade == Dificuldades.medio}
+                    callback={() => atualizaDificuldade(Dificuldades.medio)} selecionado={dificuldade == Dificuldades.medio}
                 />
                 <Botao 
                     corFundo={temas.corTextos} corTextos={temas.laranja} texto={textos.dificil}
-                    callback={() => setDificuldade(Dificuldades.dificil)} selecionado={dificuldade == Dificuldades.dificil}
+                    callback={() => atualizaDificuldade(Dificuldades.dificil)} selecionado={dificuldade == Dificuldades.dificil}
                 />
             </View>
 

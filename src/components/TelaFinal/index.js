@@ -27,11 +27,11 @@ export default function TelaFinal({palavraSecreta, resultadoJogo, resetarJogo}) 
 
             <Carregando ativado={estaCarregando} />
 
-            <Texto cor={temas.corFundo} tamanho={48} margemHorizontal={0} margemVertical={16} peso={"bold"}>
+            <Texto cor={temas.corFundo} tamanho={36} margemHorizontal={0} margemVertical={16} peso={"bold"}>
                 {resultadoJogo == EstadosJogo.ganhou ? textos.mensagemGanhou : textos.mensagemPerdeu}
             </Texto>
             {resultadoJogo == EstadosJogo.perdeu && 
-                <Texto cor={temas.laranja} tamanho={28} margemVertical={12} margemHorizontal={0}>
+                <Texto cor={temas.laranja} tamanho={24} margemVertical={12} margemHorizontal={0}>
                     {`${textos.revelarPalavraSecreta} ${palavraSecreta.join('')}`}
                 </Texto>
             }

@@ -8,7 +8,7 @@ import Botao from "../Botao";
 import getEstilo from "./estilos";
 
 export default function MenuIdioma() {
-    const { idioma, setIdioma } = useContext(IdiomaContext);
+    const { idioma, atualizaIdioma } = useContext(IdiomaContext);
     const { temas } = useContext(TemaContext);
     const estilos = getEstilo(temas);
     const textos = getTextos(idioma);
@@ -19,16 +19,16 @@ export default function MenuIdioma() {
 
             <View style={estilos.botoesContainer}>
                 <Botao 
-                    corFundo={temas.corTextos} corTextos={temas.laranja} texto={textos.portugues}
-                    callback={() => setIdioma(Idiomas.portugues)} selecionado={idioma == Idiomas.portugues}
+                    corFundo={temas.corTextos} corTextos={temas.laranja} texto={"Português"}
+                    callback={() => atualizaIdioma(Idiomas.portugues)} selecionado={idioma == Idiomas.portugues}
                 />
                 <Botao 
-                    corFundo={temas.corTextos} corTextos={temas.laranja} texto={textos.ingles}
-                    callback={() => setIdioma(Idiomas.ingles)} selecionado={idioma == Idiomas.ingles}
+                    corFundo={temas.corTextos} corTextos={temas.laranja} texto={"English"}
+                    callback={() => atualizaIdioma(Idiomas.ingles)} selecionado={idioma == Idiomas.ingles}
                 />
                 <Botao 
-                    corFundo={temas.corTextos} corTextos={temas.laranja} texto={textos.espanhol}
-                    callback={() => setIdioma(Idiomas.espanhol)} selecionado={idioma == Idiomas.espanhol}
+                    corFundo={temas.corTextos} corTextos={temas.laranja} texto={"Español"}
+                    callback={() => atualizaIdioma(Idiomas.espanhol)} selecionado={idioma == Idiomas.espanhol}
                 />
             </View>
 

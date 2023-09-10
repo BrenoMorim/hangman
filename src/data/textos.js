@@ -17,9 +17,6 @@ const textos = {
         facil: "Fácil",
         medio: "Médio",
         dificil: "Difícil",
-        portugues: "Português",
-        ingles: "Inglês",
-        espanhol: "Espanhol",
         carregando: "Carregando..."
     },
     "english": {
@@ -40,9 +37,6 @@ const textos = {
         facil: "Easy",
         medio: "Normal",
         dificil: "Hard",
-        portugues: "Portuguese",
-        ingles: "English",
-        espanhol: "Spanish",
         carregando: "Loading..."
     },
     "español": {
@@ -63,9 +57,6 @@ const textos = {
         facil: "Fácil",
         medio: "Medio",
         dificil: "Difícil",
-        portugues: "Portugués",
-        ingles: "Inglés",
-        espanhol: "Español",
         carregando: "Cargando..."
     }
 };

@@ -20,7 +20,11 @@ export async function escolherPalavraSecreta(idioma) {
         const busca = `<div style="font-size:3em; color:#6200C5;">`;
         const indice1 = html.indexOf(busca);
         const indice2 = html.indexOf('</div>', indice1);
-        const palavraSecreta = html.substring(indice1 + busca.length, indice2);
+        const palavraSecreta = html
+                                .substring(indice1 + busca.length, indice2)
+                                .replace("-", " ")
+                                .split(" ")
+                                .at(0);
 
         // Checando erros e formatando o output
         if (palavraSecreta.length == 0) throw new Error("Palavra não encontrada");

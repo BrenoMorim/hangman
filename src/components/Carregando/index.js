@@ -14,14 +14,18 @@ export default function Carregando({ativado}) {
     const textos = getTextos(idioma); 
 
     return (
-        <Animatable.View
-            animation="bounceIn"
-            duration={500}
-            style={estilos.carregando}
-        >
-            <ActivityIndicator size="large" color={temas.laranja} aria-hidden hidesWhenStopped />
-            <Text style={estilos.carregandoTexto}>{textos.carregando}</Text>
-        </Animatable.View>
+    <>
+        {ativado && 
+            <Animatable.View
+                animation="bounceIn"
+                duration={500}
+                style={estilos.carregando}
+            >
+                <ActivityIndicator size="large" color={temas.laranja} aria-hidden hidesWhenStopped />
+                <Text style={estilos.carregandoTexto}>{textos.carregando}</Text>
+            </Animatable.View>
+        }
+    </>
     )
 }
 
