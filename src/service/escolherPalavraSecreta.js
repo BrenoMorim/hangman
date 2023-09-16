@@ -34,9 +34,9 @@ export async function escolherPalavraSecreta(idioma, topico) {
     } catch(erro) {
 
         // Garente que se o site estiver fora do ar ou se o usuário estiver offline ele ainda poderá jogar
-        const palavras = palavrasPorTopico[idioma][topico];
+        const palavras = palavrasPorTopico[idioma][topico].split(" ");
         const indiceAleatorio = Math.floor(Math.random() * palavras.length);
-        const palavraSecreta = palavras[indiceAleatorio];
+        const palavraSecreta = palavras[indiceAleatorio].toUpperCase();
         return palavraSecreta.split("");
     }
 }

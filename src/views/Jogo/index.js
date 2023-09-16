@@ -75,6 +75,9 @@ export default function Jogo({route}) {
 
       <Logo/>
 
+      <Animatable.View animation={"bounceInLeft"} duration={2000}>
+        <Texto tamanho={18} cor={temas.corTextos}>{textos.topico}: {textos[topico]}</Texto>
+      </Animatable.View>
       <Animatable.View animation={"bounceIn"} duration={2000} style={estilos.progresso}>
         <ImagemForca style={estilos.ImagemForca} numeroErros={erros} width={120} height={200}/>
         <Texto cor={temas.laranja} tamanho={22} peso={"600"} margemHorizontal={16}>

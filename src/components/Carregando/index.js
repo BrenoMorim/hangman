@@ -46,13 +46,13 @@ const getEstilo = (temas, ativado) => {
             opacity: ativado ? 1 : 0,
             top: "45%",
             borderWidth: 3,
-            width: "70%",
-            height: "30%",
+            minWidth: "70%",
             borderColor: temas.laranja
         },
         carregandoTexto: {
             color: temas.corFundo,
             fontSize: 24,
+            margin: 12,
             fontWeight: "700"
         }
     });

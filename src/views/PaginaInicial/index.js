@@ -72,7 +72,7 @@ const getEstilo = (tema) => StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "start",
+    justifyContent: "center",
     gap: 12,
     backgroundColor: tema.corFundo
   }

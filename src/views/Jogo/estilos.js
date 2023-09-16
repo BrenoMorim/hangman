@@ -7,6 +7,7 @@ export const getEstilo = (tema) => {
         textAlign: 'center',
         alignItems: 'center',
         padding: 10,
+        justifyContent: 'start',
         backgroundColor: tema.corFundo,
         flex: 1,
         zIndex: 0
