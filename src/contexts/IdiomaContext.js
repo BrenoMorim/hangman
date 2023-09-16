@@ -3,6 +3,7 @@ import { Idiomas } from "../types/Idiomas";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const IdiomaContext = createContext({});
+IdiomaContext.displayName = "idioma";
 
 export function IdiomaProvider({ children }) {
 

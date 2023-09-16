@@ -10,5 +10,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
+# Build
+HangMan.apk
+
 # macOS
 .DS_Store

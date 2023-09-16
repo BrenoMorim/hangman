@@ -1,17 +1,18 @@
 import axios from "axios";
-import { palavras } from "../data/palavrasPadroes";
+import { palavrasPorTopico } from "../data/palavrasPadroes";
 import { Idiomas } from "../types/Idiomas";
+import { Topicos } from "../types/Topicos";
 
-export async function escolherPalavraSecreta(idioma) {
+export async function escolherPalavraSecreta(idioma, topico) {
     try {
         // Realizando Web Scraping
         let url;
         if (idioma == Idiomas.ingles) {
-            url = "https://www.palabrasaleatorias.com/random-words.php?fs=1";
+            url = `https://www.palabrasaleatorias.com/random-words.php?fs=1&fs2=${Topicos[topico] || 1}`;
         } else if (idioma == Idiomas.portugues) {
-            url = "http://www.palabrasaleatorias.com/palavras-aleatorias.php?fs=1";
+            url = `http://www.palabrasaleatorias.com/palavras-aleatorias.php?fs=1&fs2=${Topicos[topico] || 1}`;
         } else {
-            url = "http://www.palabrasaleatorias.com/index.php?fs=1";
+            url = `http://www.palabrasaleatorias.com/index.php?fs=1&fs2=${Topicos[topico] || 1}`;
         }
         const resposta = await axios.get(url);
         const html = resposta.data;
@@ -33,8 +34,9 @@ export async function escolherPalavraSecreta(idioma) {
     } catch(erro) {
 
         // Garente que se o site estiver fora do ar ou se o usuário estiver offline ele ainda poderá jogar
-        const indiceAleatorio = Math.floor(Math.random() * palavras[idioma].length);
-        const palavraSecreta = palavras[idioma][indiceAleatorio];
+        const palavras = palavrasPorTopico[idioma][topico];
+        const indiceAleatorio = Math.floor(Math.random() * palavras.length);
+        const palavraSecreta = palavras[indiceAleatorio];
         return palavraSecreta.split("");
     }
 }

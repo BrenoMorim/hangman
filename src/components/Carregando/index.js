@@ -40,16 +40,19 @@ const getEstilo = (temas, ativado) => {
             zIndex: 5,
             textAlign: "center",
             alignItems: "center",
+            justifyContent: "center",
             position: "absolute",
             alignSelf: "center",
             opacity: ativado ? 1 : 0,
             top: "45%",
-            borderWidth: 2,
+            borderWidth: 3,
+            width: "70%",
+            height: "30%",
             borderColor: temas.laranja
         },
         carregandoTexto: {
             color: temas.corFundo,
-            fontSize: 20,
+            fontSize: 24,
             fontWeight: "700"
         }
     });

@@ -43,12 +43,12 @@ export default function TelaFinal({palavraSecreta, resultadoJogo, resetarJogo}) 
                         await resetarJogo();
                         setEstaCarregando(false);
                     }}
-                    corFundo={temas.corFundo} corTextos={temas.corTextos} tamanhoFonte={24}
+                    corFundo={temas.corFundo} corTextos={temas.corTextos} tamanhoFonte={24} bold
                 />
             </Animatable.View>
             <Botao
                 texto={textos.botaoPaginaInicial} callback={() => {navegacao.navigate("PaginaInicial")}}
-                corFundo={temas.corFundo} corTextos={temas.corTextos} tamanhoFonte={24}
+                corFundo={temas.corFundo} corTextos={temas.corTextos} tamanhoFonte={20}
             />
         </Animatable.View>
     );

@@ -1,8 +1,8 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
-export default function Botao({texto, callback, corTextos, corFundo, selecionado=false, tamanhoFonte=20}) {
+export default function Botao({texto, callback, corTextos, corFundo, bold=false, selecionado=false, tamanhoFonte=18}) {
 
-  const estilos = getEstilo(corTextos, corFundo, selecionado, tamanhoFonte);
+  const estilos = getEstilo(corTextos, corFundo, selecionado, tamanhoFonte, bold);
 
   return (
     <TouchableOpacity style={estilos.botao} onPress={callback}>
@@ -11,9 +11,9 @@ export default function Botao({texto, callback, corTextos, corFundo, selecionado
   );
 }
 
-const getEstilo = (corTextos, corFundo, selecionado, tamanhoFonte) => StyleSheet.create({
+const getEstilo = (corTextos, corFundo, selecionado, tamanhoFonte, bold) => StyleSheet.create({
   botao: {
-    marginVertical: 24,
+    marginVertical: 16,
     marginHorizontal: 8,
     paddingVertical: 10,
     paddingHorizontal: 16,
@@ -25,7 +25,7 @@ const getEstilo = (corTextos, corFundo, selecionado, tamanhoFonte) => StyleSheet
 botaoTexto: {
     color: corTextos,
     fontSize: tamanhoFonte,
-    fontWeight: "600",
+    fontWeight: bold ? "600" : (selecionado ? "500" : "400"),
     textAlign: "center"
 },
 });

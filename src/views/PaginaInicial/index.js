@@ -13,6 +13,9 @@ import { escolherPalavraSecreta } from "../../service/escolherPalavraSecreta";
 import getTextos from "../../service/getTextos";
 import * as Animatable from 'react-native-animatable';
 import Carregando from "../../components/Carregando";
+import MenuTopicos from "../../components/MenusSelecao/MenuTopicos";
+import { StatusBar } from "react-native";
+import { TopicoContext } from "../../contexts/TopicoContext";
 
 export default function PaginaInicial() {
   
@@ -21,11 +24,12 @@ export default function PaginaInicial() {
   const estilos = getEstilo(temas);
 
   const { idioma } = useContext(IdiomaContext);
+  const { topico } = useContext(TopicoContext);
   const textos = getTextos(idioma); 
 
   async function irParaTelaJogo() {
     setEstaCarregando(true);
-    const palavraSecreta = await escolherPalavraSecreta(idioma);
+    const palavraSecreta = await escolherPalavraSecreta(idioma, topico);
     setEstaCarregando(false);
     navegacao.navigate("Jogo", {palavraSecreta: palavraSecreta});
   }
@@ -35,11 +39,17 @@ export default function PaginaInicial() {
   return (
     <SafeAreaView style={estilos.container}>
 
+      <StatusBar/>
+
       <Logo/>
       <Carregando ativado={estaCarregando}/>
 
       <Animatable.View animation={"bounce"} iterationCount={"infinite"} duration={3500}>
-        <Botao tamanhoFonte={28} callback={async () => {await irParaTelaJogo()}} texto={textos.botaoJogar} corFundo={temas.corTextos} corTextos={temas.laranja}/>
+        <Botao tamanhoFonte={22} bold callback={async () => {await irParaTelaJogo()}} texto={textos.botaoJogar} corFundo={temas.corTextos} corTextos={temas.laranja}/>
+      </Animatable.View>
+
+      <Animatable.View animation={"bounceInLeft"} duration={2500}>
+        <MenuTopicos/>
       </Animatable.View>
 
       <Animatable.View animation={"bounceInRight"} duration={2500}>
@@ -62,7 +72,8 @@ const getEstilo = (tema) => StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "start",
+    gap: 12,
     backgroundColor: tema.corFundo
   }
 });

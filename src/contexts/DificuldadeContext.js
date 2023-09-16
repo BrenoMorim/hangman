@@ -3,6 +3,7 @@ import { Chances, Dificuldades } from "../types/Dificuldades";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const DificuldadeContext = createContext({});
+DificuldadeContext.displayName = "dificuldade";
 
 export function DificuldadeProvider({ children }) {
 

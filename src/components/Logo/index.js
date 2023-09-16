@@ -24,17 +24,17 @@ const getEstilo = (tema) => {
         flexDirection: "row",
         borderBottomWidth: 5,
         borderColor: tema.preto,
-        marginVertical: 24
+        marginVertical: 16
       },
       titulo: {
         color: tema.corTextos,
-        fontSize: 56,
+        fontSize: 48,
         fontWeight: "bold"
       },
       tituloBold: {
         color: tema.laranja,
         fontWeight: "bold",
-        fontSize: 56
+        fontSize: 48
       }
     })
   }

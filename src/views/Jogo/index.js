@@ -15,6 +15,8 @@ import { getEstilo } from "./estilos";
 import getTextos from "../../service/getTextos";
 import * as Animatable from 'react-native-animatable';
 import Texto from "../../components/Texto";
+import { TopicoContext } from "../../contexts/TopicoContext";
+import { StatusBar } from "react-native";
 
 export default function Jogo({route}) {
 
@@ -27,6 +29,7 @@ export default function Jogo({route}) {
   const { chances } = useContext(DificuldadeContext);
   const [resultadoJogo, setResultadoJogo] = useState(EstadosJogo.emAndamento);
   const { idioma } = useContext(IdiomaContext);
+  const { topico } = useContext(TopicoContext);
   const textos = getTextos(idioma);
 
   const progressoAtual = palavraSecreta.map(letra => {
@@ -55,7 +58,7 @@ export default function Jogo({route}) {
   }
 
   async function resetarJogo() {
-    const novaPalavraSecreta = await escolherPalavraSecreta(idioma);
+    const novaPalavraSecreta = await escolherPalavraSecreta(idioma, topico);
     setPalavraSecreta(novaPalavraSecreta);
     setErros(0);
     setLetraEscolhida("");
@@ -66,6 +69,7 @@ export default function Jogo({route}) {
   return (
     <LetraEscolhidaContext.Provider value={{letraEscolhida, setLetraEscolhida}}>
     <SafeAreaView style={estilos.container}>
+      <StatusBar/>
 
       <TelaFinal palavraSecreta={palavraSecreta} resultadoJogo={resultadoJogo} resetarJogo={resetarJogo}/>
 
@@ -80,13 +84,13 @@ export default function Jogo({route}) {
 
       <Animatable.View animation={"bounceInLeft"} duration={2000}>
         <Texto cor={temas.corTextos}>{`${textos.chancesRestantes} ${chances - erros}`}</Texto>
-        <Texto cor={temas.corTextos}>{letrasUsadas.length > 0 && textos.letrasJaEscolhidas}</Texto>
-        <Texto cor={temas.corTextos}>{letrasUsadas.join(" ")}</Texto>
+        <Texto tamanho={16} cor={temas.corTextos}>{letrasUsadas.length > 0 && textos.letrasJaEscolhidas}</Texto>
+        <Texto tamanho={18} cor={temas.corTextos}>{letrasUsadas.join(" ")}</Texto>
       </Animatable.View>
       
       <Animatable.View animation={"bounceInRight"} duration={2000} style={estilos.chuteContainer}>
-        <Botao tamanhoFonte={24} callback={chutar} texto={textos.botaoChutar} corFundo={temas.laranja} corTextos={temas.corTextos}/>
-        <Texto cor={temas.corTextos}>{letraEscolhida == "" ? "_" : letraEscolhida}</Texto>
+        <Botao tamanhoFonte={24} bold callback={chutar} texto={textos.botaoChutar} corFundo={temas.laranja} corTextos={temas.corTextos}/>
+        <Texto tamanho={24} cor={temas.corTextos}>{letraEscolhida == "" ? "_" : letraEscolhida}</Texto>
       </Animatable.View>
 
       <Animatable.View animation={"bounceInUp"} duration={2000}>

@@ -9,8 +9,8 @@ const getEstilo = (tema) => StyleSheet.create({
     },
     titulo: {
         color: tema.corTextos,
-        fontSize: 25,
-        fontWeight: "bold",
+        fontSize: 22,
+        fontWeight: "500",
         textAlign: "center"
     },
     botoesContainer: {

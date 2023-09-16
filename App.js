@@ -1,6 +1,7 @@
 import { DificuldadeProvider } from './src/contexts/DificuldadeContext';
 import { IdiomaProvider } from './src/contexts/IdiomaContext';
 import { TemaProvider } from './src/contexts/TemaContext';
+import { TopicoProvider } from './src/contexts/TopicoContext';
 import Routes from './src/routes';
 
 export default function App() {
@@ -9,7 +10,9 @@ export default function App() {
     <TemaProvider>
       <IdiomaProvider>
         <DificuldadeProvider>
-          <Routes/>
+          <TopicoProvider>
+            <Routes/>
+          </TopicoProvider>
         </DificuldadeProvider>
       </IdiomaProvider>
     </TemaProvider>

@@ -17,7 +17,16 @@ const textos = {
         facil: "Fácil",
         medio: "Médio",
         dificil: "Difícil",
-        carregando: "Carregando..."
+        carregando: "Carregando...",
+        topico: "Tópico",
+        escolhaUmTopico: "Escolha um tópico",
+        todos: "Todos",
+        comidas: "Comidas",
+        animais: "Animais",
+        cores: "Cores",
+        corpoHumano: "Corpo humano",
+        educacao: "Educação",
+        profissoes: "Profissões"
     },
     "english": {
         botaoChutar: "Guess",
@@ -37,7 +46,16 @@ const textos = {
         facil: "Easy",
         medio: "Normal",
         dificil: "Hard",
-        carregando: "Loading..."
+        carregando: "Loading...",
+        topico: "Topic",
+        escolhaUmTopico: "Choose a topic",
+        todos: "All",
+        comidas: "Food",
+        animais: "Animals",
+        cores: "Colors",
+        corpoHumano: "Human body",
+        educacao: "Education",
+        profissoes: "Professions"
     },
     "español": {
         botaoChutar: "Adivinar",
@@ -57,7 +75,16 @@ const textos = {
         facil: "Fácil",
         medio: "Medio",
         dificil: "Difícil",
-        carregando: "Cargando..."
+        carregando: "Cargando...",
+        topico: "Asunto",
+        escolhaUmTopico: "Elige un asunto",
+        todos: "Todos",
+        comidas: "Comidas",
+        animais: "Animales",
+        cores: "Colores",
+        corpoHumano: "Cuerpo humano",
+        educacao: "Educación",
+        profissoes: "Profesiones"
     }
 };
 

@@ -3,6 +3,7 @@ import { escuro, claro } from "../estilosGlobais";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const TemaContext = createContext({});
+TemaContext.displayName = "tema";
 
 export function TemaProvider({ children }) {
     const [temaAtual, setTemaAtual] = useState("escuro");
