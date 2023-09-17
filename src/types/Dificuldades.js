@@ -6,6 +6,6 @@ export const Dificuldades = {
 
 export const Chances = {
     "FÁCIL": 6,
-    "MÉDIO": 4,
-    "DIFÍCIL": 3
+    "MÉDIO": 5,
+    "DIFÍCIL": 4
 }

@@ -12,13 +12,22 @@ import { DificuldadeContext } from "../../contexts/DificuldadeContext";
 
 export default function ImagemForca({numeroErros, height, width}) {
     const { dificuldade } = useContext(DificuldadeContext);
-    if (numeroErros == 0) return <Forca0 height={height} width={width}/>;
-    if (numeroErros == 1) return <Forca1 height={height} width={width}/>;
-    if (numeroErros == 2) return <Forca2 height={height} width={width}/>;
-    if ((numeroErros == 3 && dificuldade == Dificuldades.dificil) || 
-        (numeroErros == 4 && dificuldade == Dificuldades.medio) || 
-        numeroErros == 6) return <Forca6 height={height} width={width}/>;
-    if ((numeroErros == 3 && dificuldade == Dificuldades.medio) || numeroErros == 4) return <Forca4 height={height} width={width}/>;
-    if (numeroErros == 5) return <Forca5 height={height} width={width}/>;
-    if (numeroErros == 3 && dificuldade == Dificuldades.facil) return <Forca3 height={height} width={width}/>
+
+    const facil = dificuldade === Dificuldades.facil;
+    const medio = dificuldade === Dificuldades.medio;
+    const dificil = dificuldade === Dificuldades.dificil;
+
+    if (numeroErros === 0) 
+        return <Forca0 height={height} width={width}/>;
+    if (numeroErros === 1) 
+        return <Forca1 height={height} width={width}/>;
+    if (numeroErros === 2) 
+        return <Forca2 height={height} width={width}/>;
+    if (numeroErros === 3 && facil) 
+        return <Forca3 height={height} width={width}/>;
+    if ((numeroErros === 3 && medio) || (numeroErros === 3 && dificil) || (numeroErros === 4 && facil)) 
+        return <Forca4 height={height} width={width}/>;
+    if ((numeroErros === 4 && medio) || (numeroErros === 5 && facil))
+        return <Forca5 height={height} width={width}/>;
+    return <Forca6 height={height} width={width}/>;
 }

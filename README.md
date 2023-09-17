@@ -27,6 +27,10 @@ Ambas as páginas são animadas quando renderizadas pela primeira vez, outros co
 
 O arquivo estilosGlobais.js contém duas propriedades com as variáveis que têm as cores que serão usadas nos componentes, então usando a context API do React foi possível armazenar o tema atual e recuperar a propriedade com os estilos corretos usando a criação de StyleSheets dinâmicos.
 
+### Múltiplos tópicos
+
+No jogo é possível escolher entre uma variedade de tópicos: 
+
 ### Múltiplas línguas
 
 O jogo está disponível em três línguas, para tornar isso possível foi necessário encapsular todos os textos do app no arquivo textos.js, então para adicionar uma nova língua basta adicionar uma nova propriedade nesse arquivo com a tradução dos textos. A context API permite que o idioma atual seja armazenado e então usado como argumento na função getTextos, que vai retornar os textos no idioma certo.
@@ -69,4 +73,13 @@ cd hangman
 npm install
 npm install -g expo
 npm start
+```
+
+## Fazendo o build de um arquivo .apk
+
+Tendo uma conta na EAS (expo application service), você pode realizar o build da aplicação de forma gratuita e criar um arquivo .apk para ser instalado em um celular.
+
+```sh
+eas login
+eas build -p android -e preview
 ```
