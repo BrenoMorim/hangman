@@ -59,7 +59,13 @@ Contém as opções que podem ser selecionadas:
 
 Contém o jogo em si, com o teclado onde se pode escolher as letras, um botão para chutar, além da imagem mostrando quantos erros já foram cometidos:
 
-<img src="./paginas/jogo.png" alt="Screenshot de uma partida do jogo em inglês" height="500"/>
+<img src="./paginas/jogo.png" alt="Screenshot de uma partida do jogo em português" height="500"/>
+
+### Tela final
+
+Contém a mensagem de vitória ou derrota, dando a opção de voltar à página inicial ou jogar novamente:
+
+<img src="./paginas/tela-final.png" alt="Screenshot da tela final em português" height="500"/>
 
 ---
 
