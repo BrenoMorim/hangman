@@ -7,7 +7,7 @@ TopicoContext.displayName = "topico";
 
 export function TopicoProvider({ children }) {
 
-    const [topico, setTopico] = useState(Topicos.todos);
+    const [topico, setTopico] = useState(Object.keys(Topicos)[0]);
 
     async function pegaTopicoArmazenado() {
         const topicoArmazenado = await AsyncStorage.getItem("topico");
@@ -17,7 +17,7 @@ export function TopicoProvider({ children }) {
     pegaTopicoArmazenado();
 
     async function atualizaTopico(novoTopico) {
-				setTopico(novoTopico);
+        setTopico(novoTopico);
         await AsyncStorage.setItem("topico", novoTopico);
     }
 
